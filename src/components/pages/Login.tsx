@@ -8,7 +8,7 @@ export const Login: FC = memo(() => {
   const [userId, setUserId] = useState('')
 
   const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => setUserId(e.target.value)
-
+  const onclickLogin = () => login(userId)
   return (
     <Flex align="center" justify="ceter" height="100vh">
       <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
@@ -19,7 +19,9 @@ export const Login: FC = memo(() => {
         <Stack spacing={3}>
           <Input placeholder="ユーザーID" value={userId} onChange={onChangeUserId} />
         </Stack>
-        <PrimaryButton>ログイン</PrimaryButton>
+        <PrimaryButton disabled={userId === ''} loading={loading} onClick={onclickLogin}>
+          ログイン
+        </PrimaryButton>
       </Box>
     </Flex>
   )
