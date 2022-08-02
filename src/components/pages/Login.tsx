@@ -5,6 +5,14 @@ import { PrimaryButton } from '../atoms/button/PrimaryButton'
 
 export const Login: FC = memo(() => {
   const { login, loading } = useAuth()
+  /*
+    inputに入力した値をstateに保持する
+    入力: onChangeで入力値をstateに保持
+    ログインボタン: onClickでフェッチに使用する
+    
+    ログインをクリックでlogin()に入力した値を渡す
+    axiosでフェッチする
+  */
   const [userId, setUserId] = useState('')
 
   const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => setUserId(e.target.value)
