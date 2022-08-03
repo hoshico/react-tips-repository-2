@@ -10,11 +10,11 @@ export const homeRoutes = [
     children: <HeaderLayout><Home /></HeaderLayout>
   },
   {
-    path: "/user_management",
+    path: "/home/user_management",
     children: <HeaderLayout><UserManagement /></HeaderLayout>
   },
   {
-    path: "/setting",
+    path: "/home/setting",
     children: <HeaderLayout><Setting /></HeaderLayout>
   },
   {
