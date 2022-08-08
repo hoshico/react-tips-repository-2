@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 import { User } from '../types/api/user'
 import { useMessage } from './useMessage'
 
-export const UserAllUser = () => {
+export const UseAllUsers = () => {
   /*
     ローディングとデータ取得を返すhooks
     api取得中はloadingにしたい
@@ -12,7 +12,7 @@ export const UserAllUser = () => {
   const { showMessage } = useMessage()
   const [loading, setLoading] = useState(false)
   const [users, setUsers] = useState<Array<User>>([])
-  const getUser = useCallback(() => {
+  const getUsers = useCallback(() => {
     setLoading(true)
     axios
       .get<Array<User>>('https://jsonplaceholder.typicode.com/users/')
@@ -24,5 +24,5 @@ export const UserAllUser = () => {
         setLoading(false);
       })
   }, [])
-  return { getUser, loading, users }
+  return { getUsers, loading, users }
 }
