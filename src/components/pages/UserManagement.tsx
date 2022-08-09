@@ -1,10 +1,18 @@
-import { Center, Spinner, Wrap, WrapItem } from '@chakra-ui/react'
-import React, { FC, memo } from 'react'
+import { Center, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Spinner, Stack, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
+import React, { FC, memo, useCallback, useEffect } from 'react'
 import { UserCard } from '../organisms/user/UserCard'
 import { UseAllUsers } from '../../hooks/UseAllUsers'
 
 export const UserManagement: FC = memo(() => {
-  const { getUsers, users, loading } = UseAllUsers()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { getUsers, users, loading } = UseAllUsers();
+
+  useEffect(() => {
+
+  },[]);
+
+  const onclickUser = useCallback(() => onOpen(),[]);
+
   return (
     <>
       {loading ? (
@@ -19,11 +27,41 @@ export const UserManagement: FC = memo(() => {
                 imageUrl="https://source.unsplash.com/random"
                 userName={user.username}
                 fullName={user.name}
+                onClick={onclickUser}
               />
             </WrapItem>
           ))}
         </Wrap>
       )}
+      <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>
+              ユーザー詳細
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Stack>
+                <FormControl>
+                  <FormLabel>名前</FormLabel>
+                  <Input value="やす" isReadOnly />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>フルネーム</FormLabel>
+                  <Input value="yasuyuki hoshimoto" isReadOnly />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>MAIL</FormLabel>
+                  <Input value="1234@yasu.com" isReadOnly />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>TEL</FormLabel>
+                  <Input value="090-0000-0000" isReadOnly />
+                </FormControl>
+              </Stack>
+            </ModalBody>
+          </ModalContent>
+      </Modal>
     </>
   )
 })
