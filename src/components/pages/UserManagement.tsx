@@ -13,7 +13,7 @@ import { UserDetailModal } from '../organisms/user/UserDetailModal'
 export const UserManagement: FC = memo(() => {
   const { getUsers, users, loading } = UseAllUsers()
   const { isOpen, onClose, onOpen } = useDisclosure()
-  useEffect(() => {}, [])
+  useEffect(() => getUsers(), [])
 
   const onclickUser = useCallback(() => onOpen(), [])
 
