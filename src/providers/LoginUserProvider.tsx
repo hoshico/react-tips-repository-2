@@ -6,11 +6,11 @@ import { User } from '../types/api/user'
   初期値はオブジェクト
 
 */
-type LoginUserContextType = {
+export type LoginUserContextType = {
   loginUser: User | null
   setLoginUser: Dispatch<SetStateAction<User | null>>
 }
-const LoginUserContext = createContext<LoginUserContextType>(
+export const LoginUserContext = createContext<LoginUserContextType>(
   {} as LoginUserContextType
 );
 
