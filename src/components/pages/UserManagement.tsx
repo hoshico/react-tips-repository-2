@@ -10,11 +10,14 @@ import { UserCard } from '../organisms/user/UserCard'
 import { UseAllUsers } from '../../hooks/UseAllUsers'
 import { UserDetailModal } from '../organisms/user/UserDetailModal'
 import { useSelectUser } from '../../hooks/useSelectUser'
+import { useLoginUser } from '../../hooks/useLoginUser'
 
 export const UserManagement: FC = memo(() => {
   const { getUsers, users, loading } = UseAllUsers()
   const { isOpen, onClose, onOpen } = useDisclosure()
   const { onSelectUser, selectedUser } = useSelectUser()
+  const { loginUser } = useLoginUser();
+  console.log(loginUser)
 
   useEffect(() => getUsers(), [])
 

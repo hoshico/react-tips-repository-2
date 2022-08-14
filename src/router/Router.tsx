@@ -6,13 +6,13 @@ import { homeRoutes } from './HomeRoutes'
 
 export const Router: FC = memo(() => {
   return (
-    <Routes>
-      <LoginUserProvider>
+    <LoginUserProvider>
+      <Routes>
         <Route path="/" element={<Login />} />
         {homeRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.children} />
         ))}
-      </LoginUserProvider>
-    </Routes>
+      </Routes>
+    </LoginUserProvider>
   )
 })

@@ -18,7 +18,7 @@ export const Login: FC = memo(() => {
   const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => setUserId(e.target.value)
   const onclickLogin = () => login(userId)
   return (
-    <Flex align="center" justify="ceter" height="100vh">
+    <Flex align="center" justify="center" height="100vh">
       <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
         <Heading as="h1" size="lg" textAlign="center">
           ユーザー管理アプリ
