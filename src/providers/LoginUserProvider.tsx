@@ -7,16 +7,21 @@ import { User } from '../types/api/user'
 
 */
 export type LoginUserContextType = {
-  loginUser: User | null
-  setLoginUser: Dispatch<SetStateAction<User | null>>
+  loginUser: LoginUser | null
+  setLoginUser: Dispatch<SetStateAction<LoginUser | null>>
 }
+// Userという型に対してisAdminを追加
+type LoginUser = User & { isAdmin: boolean };
+
+
 export const LoginUserContext = createContext<LoginUserContextType>(
   {} as LoginUserContextType
 );
 
 export const LoginUserProvider = (props: { children: ReactNode } ) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<User | null>(null);
+  // 初期値がnull なら型にnullを含ませる
+  const [loginUser, setLoginUser] = useState<LoginUser | null>(null);
 
   return (
     <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>
