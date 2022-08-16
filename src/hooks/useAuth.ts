@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { User } from '../types/api/user'
 import { useMessage } from './useMessage'
 import { useLoginUser } from '../hooks/useLoginUser'
+import { LoginUser } from '../providers/LoginUserProvider'
 
 export const useAuth = () => {
   const navigation = useNavigate()
@@ -19,10 +20,18 @@ export const useAuth = () => {
       それ以外はエラーを表示させる  
     */
       axios
-        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .get<LoginUser>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
-            setLoginUser(res.data)
+            const isAdmin = res.data.id === 10 ? true : false;
+            /*
+              データを取得した際にidを元にloginUserも設定する
+              idが10なら
+              isAdminはtrue
+              それ以外はfalse
+            */
+            // isAdminというプロパティにisAdiminを再設定
+            setLoginUser({...res.data, isAdmin})
             showMessage({ title: 'ログインしました', status: 'success' })
             navigation('/home')
           } else {

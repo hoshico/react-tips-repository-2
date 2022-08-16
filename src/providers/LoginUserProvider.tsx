@@ -11,7 +11,7 @@ export type LoginUserContextType = {
   setLoginUser: Dispatch<SetStateAction<LoginUser | null>>
 }
 // Userという型に対してisAdminを追加
-type LoginUser = User & { isAdmin: boolean };
+export type LoginUser = User & { isAdmin: boolean };
 
 
 export const LoginUserContext = createContext<LoginUserContextType>(
