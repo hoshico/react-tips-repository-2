@@ -17,10 +17,10 @@ import { User } from '../../../types/api/user'
 import { PrimaryButton } from '../../atoms/button/PrimaryButton'
 
 type Props = {
-  user: User | null
-  isOpen: boolean
-  isAdmin?: boolean
-  onClose: () => void
+  user: User | null;
+  isOpen: boolean;
+  isAdmin?: boolean;
+  onClose: () => void;
 }
 
 export const UserDetailModal: FC<Props> = memo((props) => {
