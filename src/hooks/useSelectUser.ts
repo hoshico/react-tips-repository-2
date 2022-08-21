@@ -8,6 +8,7 @@ type Props = {
 }
 
 export const useSelectUser = () => {
+  // 最初は選ばれていない状態なので
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const onSelectUser = useCallback((props: Props) => {
