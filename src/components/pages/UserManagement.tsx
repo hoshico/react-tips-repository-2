@@ -23,6 +23,7 @@ export const UserManagement: FC = memo(() => {
   // propsで渡す関数はmemo化してあげる方が良い
   const onClickUser = useCallback(
     (id: number) => {
+      console.log(id);
       // onSelectUser({ id: id, users: users})なので省略記法
       onSelectUser({ id, users, onOpen })
     },
